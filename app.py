@@ -96,6 +96,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Пароль', validators=[InputRequired()])
     submit = SubmitField('Войти')
 
+# --- КОНТЕКСТНЫЙ ПРОЦЕССОР ДЛЯ ТЕКУЩЕГО ГОДА ---
+@app.context_processor
+def inject_year():
+    return {'current_year': datetime.now().year}
+
 # --- МАРШРУТЫ ---
 @app.route('/')
 def index():
@@ -172,7 +177,9 @@ def quest(grade, quest_id):
     
     return render_template('quest_detail.html', grade=grade, quest_id=quest_id, quest=quest_info)
 
+# --- СОЗДАНИЕ ТАБЛИЦ БАЗЫ ДАННЫХ ПРИ ЗАПУСКЕ ---
+with app.app_context():
+    db.create_all()
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
