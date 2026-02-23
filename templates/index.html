@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>Добро пожаловать в МатКвест!</h1>
+        <p>Войди, чтобы начать приключение</p>
+        <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(class="form-control", placeholder="Твой логин") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control", placeholder="Твой пароль") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+        <p class="auth-link">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйся!</a></p>
+    </div>
+</div>
+{% endblock %}

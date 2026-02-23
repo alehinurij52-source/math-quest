@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Квесты для {{ grade }} класса</h1>
+<div class="quests-grid">
+    {% for i in range(1, 6) %}
+        {% set quest_key = grade ~ '_' ~ i %}
+        <div class="quest-card {% if user.is_quest_completed(grade, i) %}completed{% endif %}">
+            <div class="quest-icon">📚</div>
+            <h3>Квест {{ i }}</h3>
+            <p>{{ QUEST_DATA.get(quest_key, {}).get('description', 'Задание') }}</p>
+            {% if user.is_quest_completed(grade, i) %}
+                <span class="completed-badge">✓ Выполнено</span>
+            {% else %}
+                <a href="{{ url_for('quest', grade=grade, quest_id=i) }}" class="btn-start">Начать квест</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<div class="back-link">
+    <a href="{{ url_for('dashboard') }}">← Выбрать другой класс</a>
+</div>
+{% endblock %}

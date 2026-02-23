@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Выбери свой класс, {{ user.username }}!</h1>
+<div class="grades-path">
+    <div class="grade-card grade-1" onclick="window.location.href='{{ url_for('quests', grade=1) }}'">
+        <span class="grade-number">1</span>
+        <p>Класс</p>
+        <small>Счет и формы</small>
+    </div>
+    <div class="grade-card grade-2" onclick="window.location.href='{{ url_for('quests', grade=2) }}'">
+        <span class="grade-number">2</span>
+        <p>Класс</p>
+        <small>Сложение и вычитание</small>
+    </div>
+    <div class="grade-card grade-3" onclick="window.location.href='{{ url_for('quests', grade=3) }}'">
+        <span class="grade-number">3</span>
+        <p>Класс</p>
+        <small>Таблица умножения</small>
+    </div>
+    <div class="grade-card grade-4" onclick="window.location.href='{{ url_for('quests', grade=4) }}'">
+        <span class="grade-number">4</span>
+        <p>Класс</p>
+        <small>Уравнения и дроби</small>
+    </div>
+</div>
+{% endblock %}

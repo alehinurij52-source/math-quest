@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="quest-detail-container">
+    <h1 class="page-title">Квест {{ quest_id }} для {{ grade }} класса</h1>
+    <div class="quest-card detail">
+        <div class="quest-question">
+            <p>{{ quest.question }}</p>
+        </div>
+        <form method="POST" class="quest-form">
+            <div class="form-group">
+                <label for="answer">Твой ответ:</label>
+                <input type="text" id="answer" name="answer" class="form-control" placeholder="Введи ответ" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary">Проверить</button>
+        </form>
+        <div class="back-link">
+            <a href="{{ url_for('quests', grade=grade) }}">← Вернуться к квестам</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

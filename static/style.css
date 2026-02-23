@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Навигация */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links span {
+    margin-right: 1rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.btn-small {
+    background: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.btn-small:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Главная страница (вход/регистрация) */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+}
+
+.auth-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-card h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group {
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    font-weight: 600;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.auth-link {
+    margin-top: 1.5rem;
+    color: #666;
+}
+
+.auth-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+/* Страница с выбором класса (дорожка) */
+.page-title {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.grades-path {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+}
+
+.grade-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.grade-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+.grade-1::before { background: #FF6B6B; }
+.grade-2::before { background: #4ECDC4; }
+.grade-3::before { background: #FFD93D; }
+.grade-4::before { background: #6BCB77; }
+
+.grade-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.grade-number {
+    font-size: 4rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.grade-1 .grade-number { color: #FF6B6B; }
+.grade-2 .grade-number { color: #4ECDC4; }
+.grade-3 .grade-number { color: #FFD93D; }
+.grade-4 .grade-number { color: #6BCB77; }
+
+.grade-card p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.grade-card small {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Сетка квестов */
+.quests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.quest-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.3s;
+    position: relative;
+}
+
+.quest-card.completed {
+    background: linear-gradient(135deg, #a8e6cf, #d4edda);
+    border: 3px solid #28a745;
+}
+
+.quest-card:hover {
+    transform: translateY(-5px);
+}
+
+.quest-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.quest-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.quest-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    min-height: 60px;
+}
+
+.btn-start {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-start:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.completed-badge {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.back-link {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.back-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: rgba(255,255,255,0.8);
+    margin-top: 2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .grades-path {
+        flex-direction: column;
+    }
+    
+    .grade-card {
+        width: 100%;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    /* Страница детали квеста */
+.quest-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quest-card.detail {
+    max-width: 600px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.quest-question {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.quest-form {
+    margin-top: 2rem;
+}
+
+.quest-form .btn {
+    width: auto;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+}
+}
