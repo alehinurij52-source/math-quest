@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>МатКвест - Путешествие в мир математики</title>
-    <!-- Подключаем шрифт Google Fonts для красоты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Подключаем CSS (опишем позже) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -18,6 +16,11 @@
             <div class="nav-links">
                 {% if current_user.is_authenticated %}
                     <span>Привет, {{ current_user.username }}!</span>
+                    {% if current_user.is_admin %}
+                        <a href="{{ url_for('admin_panel') }}" class="btn-small">Админ панель</a>
+                    {% elif current_user.is_teacher %}
+                        <a href="{{ url_for('teacher_dashboard') }}" class="btn-small">Мои задания</a>
+                    {% endif %}
                     <a href="{{ url_for('logout') }}" class="btn-small">Выйти</a>
                 {% endif %}
             </div>
@@ -25,7 +28,6 @@
     </nav>
 
     <main class="container">
-        <!-- Блок для всплывающих сообщений (flash) -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -39,7 +41,7 @@
 
     <footer>
         <div class="container">
-            <p>2026 МатКвест для 1-4 классов. Работа Алехина Юрия</p>
+            <p>© {{ current_year }} МатКвест для 1-4 классов</p>
         </div>
     </footer>
 </body>

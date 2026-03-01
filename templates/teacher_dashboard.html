@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Панель учителя</h1>
+
+<div class="teacher-section">
+    <h2>Мои задания</h2>
+    <a href="{{ url_for('create_quest') }}" class="btn btn-primary">➕ Создать новое задание</a>
+
+    <div class="quests-grid">
+        {% for quest in quests %}
+        <div class="quest-card">
+            <div class="quest-icon">📝</div>
+            <h3>{{ quest.description }}</h3>
+            <p>Класс: {{ quest.grade }}</p>
+            <p><small>Создано: {{ quest.created_at.strftime('%d.%m.%Y') }}</small></p>
+            <div class="quest-actions">
+                <a href="{{ url_for('edit_quest', quest_id=quest.id) }}" class="btn-small">✏️ Редактировать</a>
+                <a href="{{ url_for('delete_quest', quest_id=quest.id) }}" class="btn-small danger" onclick="return confirm('Удалить задание?')">🗑️ Удалить</a>
+            </div>
+        </div>
+        {% else %}
+        <p>У вас пока нет созданных заданий.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="back-link">
+    <a href="{{ url_for('dashboard') }}">← На главную</a>
+</div>
+{% endblock %}

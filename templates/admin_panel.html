@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Панель администратора</h1>
+
+<div class="admin-section">
+    <h2>Учителя</h2>
+    <a href="{{ url_for('create_teacher') }}" class="btn btn-primary">➕ Добавить учителя</a>
+    <ul class="teacher-list">
+        {% for teacher in teachers %}
+        <li>
+            <span>{{ teacher.username }} (создан {{ teacher.created_at.strftime('%d.%m.%Y') }})</span>
+        </li>
+        {% else %}
+        <li>Пока нет ни одного учителя.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="back-link">
+    <a href="{{ url_for('dashboard') }}">← На главную</a>
+</div>
+{% endblock %}

@@ -365,4 +365,42 @@ footer {
     padding: 0.8rem 2rem;
     margin-top: 1rem;
 }
+/* Стили для админки и учительской */
+.admin-section, .teacher-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.teacher-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.teacher-list li {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quest-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn-small.danger {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-small.danger:hover {
+    background: #ff5252;
+}
 }

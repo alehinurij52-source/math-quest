@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="quest-detail-container">
-    <h1 class="page-title">Квест {{ quest_id }} для {{ grade }} класса</h1>
+    <h1 class="page-title">{{ quest.description }}</h1>
     <div class="quest-card detail">
         <div class="quest-question">
             <p>{{ quest.question }}</p>
@@ -14,7 +14,7 @@
             <button type="submit" class="btn btn-primary">Проверить</button>
         </form>
         <div class="back-link">
-            <a href="{{ url_for('quests', grade=grade) }}">← Вернуться к квестам</a>
+            <a href="{{ url_for('quests', grade=quest.grade) }}">← Вернуться к квестам</a>
         </div>
     </div>
 </div>
