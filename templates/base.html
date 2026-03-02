@@ -27,15 +27,18 @@
         </div>
     </nav>
 
-    <main class="container">
+    <!-- Контейнер для всплывающих уведомлений (тосты) -->
+    <div id="flash-container" class="flash-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
+    </div>
 
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
 
@@ -44,5 +47,21 @@
             <p>© {{ current_year }} МатКвест для 1-4 классов</p>
         </div>
     </footer>
+
+    <!-- Скрипт для автоматического скрытия тостов через 5 секунд -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = document.querySelectorAll('.flash-message');
+            messages.forEach(function(msg) {
+                setTimeout(function() {
+                    msg.style.transition = 'opacity 0.3s ease';
+                    msg.style.opacity = '0';
+                    setTimeout(function() {
+                        msg.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>
