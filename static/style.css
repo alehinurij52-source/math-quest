@@ -333,6 +333,7 @@ footer {
     .page-title {
         font-size: 2rem;
     }
+}
     /* Страница детали квеста */
 .quest-detail-container {
     display: flex;
@@ -448,5 +449,4 @@ footer {
     background: #fff3cd;
     color: #856404;
     border: 2px solid #ffeeba;
-}
 }
